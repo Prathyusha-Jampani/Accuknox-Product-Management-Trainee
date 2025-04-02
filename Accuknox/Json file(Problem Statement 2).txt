@@ -1,0 +1,34 @@
+{
+  "clusterName": "local-k8s-cluster",
+  "scanner": "Kubescape",
+  "scanDate": "2025-04-02T12:00:00Z",
+  "findings": [
+    {
+      "id": "C-001",
+      "title": "Privileged Container",
+      "severity": "High",
+      "description": "Container running with privileged mode enabled.",
+      "namespace": "default",
+      "resource": "pod/web-app",
+      "remediation": "Disable privileged mode in the security context."
+    },
+    {
+      "id": "C-002",
+      "title": "Missing Network Policy",
+      "severity": "Medium",
+      "description": "No network policy found for the namespace.",
+      "namespace": "default",
+      "resource": "namespace/default",
+      "remediation": "Define and apply a network policy to limit communication."
+    },
+    {
+      "id": "C-003",
+      "title": "Unrestricted Host Path",
+      "severity": "Critical",
+      "description": "Pod has unrestricted access to the host file system.",
+      "namespace": "kube-system",
+      "resource": "pod/monitoring-agent",
+      "remediation": "Restrict host path mounts to specific directories."
+    }
+  ]
+}
